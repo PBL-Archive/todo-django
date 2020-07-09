@@ -6,40 +6,39 @@
         <div class="display-4">Todo App</div>
     </div>
     <div class="d-flex justify-content-center border m-1 p-1">
-        <form action="/" method="POST">
+        <form action="/" method="POST" class="d-flex justify-content-center w-100">
             {% csrf_token %}
-            <input type="submit" id="" value="&#9711;">
-        </form>
-        <form action="/" method="POST">
-            {% csrf_token %}
+            <!-- Check Button -->
+            {% ifequal checked_btn "not_checked" %}
+            <input type="hidden" name="checked" value="not_checked">
+            <input type="submit" value="&#9711;">
+            {% else %}
+            <input type="hidden" name="checked" value="checked">
             <input type="submit" value="&#10004;">
-        </form>
-        <form action="/" method="POST" class="w-100">
-            {% csrf_token %}
-            <input type="text" class="w-100" placeholder="Edit your todo here...">
-        </form>
-        <form action="/" method="POST">
-            {% csrf_token %}
+            {% endifequal %}
+            <!-- Textbox -->
+            <input type="text" focused class="w-100" placeholder="Edit your todo here...">
+            <!-- Edit Button -->
+            {% ifequal checked_btn "not_checked" %}
+            <input type="hidden" name="edit" value="edit">
             <input type="submit" value="&#9998;">
-        </form>
-        <form action="/" method="POST">
-            {% csrf_token %}
+            {% else %}
+            <input type="hidden" name="edit" value="not_edit">
             <input type="submit" disabled value="&#9998;">
+            {% endifequal %}
         </form>
-        <form action="/" method="POST">
+        <form action="/" method="POST" class="d-flex justify-content-center">
             {% csrf_token %}
+            <!-- Delete Button -->
+            <input type="hidden" name="remove" value="remove">
             <input type="submit" value="&#9940;">
         </form>
     </div>
-    <div class="d-flex justify-content-center border m-1 p-1">
-        <form action="/" class="w-100">
-            {% csrf_token %}
-            <input type="text" class="w-100" placeholder="Add your todo here...">
-        </form>
-        <form action="/">
-            {% csrf_token %}
-            <input type="submit" value="&#10010;">
-        </form>
-    </div>
+    <form action="/" method="POST" class="d-flex justify-content-center border m-1 p-1">
+        {% csrf_token %}
+        <input type="text" class="w-100" placeholder="Add your todo here...">
+        <input type="hidden" name="add" value="add">
+        <input type="submit" value="&#10010;">
+    </form>
 </div>
 {% endblock body %}
