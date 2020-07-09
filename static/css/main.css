@@ -1,0 +1,30 @@
+.container {
+  max-width: 540px !important;
+}
+input[type=submit] {
+  min-width:36px!important;
+  min-height:36px!important;
+  max-width:36px!important;
+  max-height:36px!important;
+  background-color:transparent;
+  border:none;
+  padding:1px!important;
+  margin:0px!important;
+}
+input[type=submit]:focus {
+  outline:none;
+}
+input[type=submit]:hover {
+  background-color: rgb(240, 240, 240);
+  border-radius:100px;
+}
+input[type=text] {
+  border:none;
+  min-height:36px!important;
+  max-height:36px!important;
+  padding:1px 8px!important;
+  margin:0px!important;
+}
+input[type=text]:focus {
+  outline:none;
+}
