@@ -5,40 +5,60 @@
     <div class="d-flex justify-content-center m-1 p-1">
         <div class="display-4">Todo App</div>
     </div>
+    {% for todo in todos %}
     <div class="d-flex justify-content-center border m-1 p-1">
-        <form action="/" method="POST" class="d-flex justify-content-center w-100">
+        <form action="/" method="POST" class="d-flex justify-content-center">
             {% csrf_token %}
+            <input type="hidden" name="todoid" value={{todo.todo_id}}>
             <!-- Check Button -->
-            {% ifequal checked_btn "not_checked" %}
+            {% ifequal todo.checked "not_checked" %}
             <input type="hidden" name="checked" value="not_checked">
             <input type="submit" value="&#9711;">
             {% else %}
             <input type="hidden" name="checked" value="checked">
             <input type="submit" value="&#10004;">
             {% endifequal %}
+        </form>
+        <form action="/" method="POST" class="d-flex justify-content-center w-100">
+            {% csrf_token %}
+            <input type="hidden" name="todoid" value={{todo.todo_id}}>
             <!-- Textbox -->
-            <input type="text" focused class="w-100" placeholder="Edit your todo here...">
+            {% ifequal todo.todotext "can_edit" %}
+            <input type="text" name="todotext" class="w-100 can_edit_text" value="{{todo.todo}}"
+                placeholder="Edit your todo here...">
+            {% else %}
+            <input type="text" name="todotext" disabled class="w-100 cannot_edit_text" value="{{todo.todo}}"
+                placeholder="Edit your todo here...">
+            {% endifequal %}
+        </form>
+        <form action="/" method="POST" class="d-flex justify-content-center">
+            {% csrf_token %}
+            <input type="hidden" name="todoid" value={{todo.todo_id}}>
             <!-- Edit Button -->
-            {% ifequal checked_btn "not_checked" %}
+            {% ifequal todo.checked "not_checked" %}
             <input type="hidden" name="edit" value="edit">
             <input type="submit" value="&#9998;">
             {% else %}
-            <input type="hidden" name="edit" value="not_edit">
+            <input type="hidden" name="edit" value="edit">
             <input type="submit" disabled value="&#9998;">
             {% endifequal %}
         </form>
         <form action="/" method="POST" class="d-flex justify-content-center">
             {% csrf_token %}
+            <input type="hidden" name="todoid" value={{todo.todo_id}}>
             <!-- Delete Button -->
             <input type="hidden" name="remove" value="remove">
             <input type="submit" value="&#9940;">
         </form>
     </div>
-    <form action="/" method="POST" class="d-flex justify-content-center border m-1 p-1">
-        {% csrf_token %}
-        <input type="text" class="w-100" placeholder="Add your todo here...">
-        <input type="hidden" name="add" value="add">
-        <input type="submit" value="&#10010;">
-    </form>
+    {% endfor %}
+    <div class="d-flex justify-content-center border m-1 p-1">
+        <form action="/" method="POST" class="d-flex justify-content-center w-100">
+            {% csrf_token %}
+            <input type="hidden" name="add">
+            <input type="text" name="new_todo" class="w-100 add_text" placeholder="Add your todo here...">
+            <input type="submit" value="&#10010;">
+        </form>
+    </div>
 </div>
 {% endblock body %}
