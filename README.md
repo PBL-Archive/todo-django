@@ -2,7 +2,7 @@
 Todo App website to demonstrate Django CRUD operations.
 
 ## Screenshots
-![Demonstration](https://github.com/baijudodhia/todo-django/blob/master/readme-assets/1.png)
+![Demonstration](https://github.com/baijudodhia/todo-django/blob/master/readme-assets/0.png)
 
 ## Setup
 
