@@ -21,7 +21,7 @@ python manage.py migrate
 
 python manage.py runserver
 ```
-5. Open https://localhost:8000/ in your browser
+5. Open http://localhost:8000/ in your browser
 
 ## Deploy to Heroku
 
