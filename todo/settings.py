@@ -27,7 +27,7 @@ SECRET_KEY = ')ltyyg7sw4^(t7)eke)td$!&t$-6el7eb#8$4c-m+0ia8*izy%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://bd-todo-dj.herokuapp.com/']
+ALLOWED_HOSTS = ['https://tododj.herokuapp.com/']
 
 
 # Application definition
